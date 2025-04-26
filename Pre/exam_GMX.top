@@ -1,0 +1,30 @@
+; cyc5398_GMX.top created by acpype (v: 2023.10.27) on Mon Apr 21 11:37:05 2025
+
+;[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+;1               2               yes             0.5     0.8333333333
+
+; Include force field parameters
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+; Include DP-578_GMX.itp topology
+#include "exam_GMX.itp"
+
+; Ligand position restraints
+#ifdef POSRES_LIG
+#include "posre_exam.itp"
+#endif
+
+; Include Water parameters
+#include "amber99sb-ildn.ff/tip4p.itp"
+
+; Include ion parameters
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+exam in water
+
+[ molecules ]
+; Compound        nmols
+ exam          1    
+
